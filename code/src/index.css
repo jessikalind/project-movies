@@ -9,5 +9,10 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+    monosp
+}
+
+.main-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
