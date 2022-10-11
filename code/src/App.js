@@ -1,12 +1,44 @@
-import React from 'react';
+/* eslint-disable no-template-curly-in-string */
+import React, { useState, useEffect } from 'react';
 
 export const App = () => {
-fetch('https://api.themoviedb.org/3/movie/popular?api_key=f8eb3d0941c8cec7118b188a305910c5&language=en-US&page=1')
-.then((data) => data.json())
-.then((configuredData) => console.log(configuredData))
+  const [movies, setMovies] = useState([])
+  // const [images, setImages] = useState([])
+
+  useEffect(() => {
+    fetch('https://api.themoviedb.org/3/movie/popular?api_key=f8eb3d0941c8cec7118b188a305910c5&language=en-US&page=1')
+      .then((data) => data.json())
+      .then((configuredData) => setMovies(configuredData.results))
+  }, [])
+
+  // useEffect(() => {
+  //   fetch('https://api.themoviedb.org/3/movie/popular?api_key=f8eb3d0941c8cec7118b188a305910c5&language=en-US&page=1')
+  //     .then((data) => data.json())
+  //     .then((imgData) => setImages(imgData.images))
+  // }, [])
+
+  // useEffect(() => {
+  //   fetch('https://api.themoviedb.org/3/movie/760161?api_key=f8eb3d0941c8cec7118b188a305910c5&language=en-US')
+  //     .then((data) => data.json())
+  //     .then((configuredData) => console.log(configuredData))
+  // }, [])
+
   return (
     <div>
-      Find me in src/app.js!
+      {movies.map((movie) => (
+        <>
+          <h1>{movie.original_title}</h1>
+          <p>{movie.overview}</p>
+          <p>Release date: {movie.release_date}</p>
+          <p>{movie.id}</p>
+          <img src={`https://image.tmdb.org/t/p/w92${movie.poster_path}`} alt="film" />
+        </>
+      ))}
     </div>
   );
 }
+
+// {images.images.map((image) => (
+//   // eslint-disable-next-line jsx-a11y/alt-text
+// ))}
+// <img src={`https://image.tmdb.org/t/p/${image.poster_sizes.w92}${movie.poster_path}}` />
