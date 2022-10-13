@@ -53,6 +53,7 @@ code {
   left: 20%;
   top: 50%;
   color: white;
+  opacity: 0;
 }
 
 .details-image {
@@ -66,4 +67,29 @@ code {
     position: relative;
     width: 25%;
   }
+
+/* Details page */
+.details-container {
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr)
 }
+
+.go-back-btn {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  align-self: flex-start;
+}
+
+.details-poster {
+ grid-column: 1 / 2;
+ grid-row: 2 / 4;
+}
+
+.movie-info {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+
+}
+
